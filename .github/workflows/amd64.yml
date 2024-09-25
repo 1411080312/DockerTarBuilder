@@ -17,6 +17,7 @@ jobs:
 
     - name: Clean up Docker to free space
       run: |
+          docker login -u "pengnanke123@aliyun.com" -p "037561@Pnk1065B"
           docker system prune -a -f
           docker volume prune -f
 
