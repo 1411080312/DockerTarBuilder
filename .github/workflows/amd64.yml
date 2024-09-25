@@ -23,10 +23,11 @@ jobs:
 
     - name: Pull Docker Images and Package
       run: |
-        docker login -u "pengnanke123@aliyun.com" -p "037561@Pnk1065B" registry-1.docker.io
+        
         images="${{ github.event.inputs.docker_images }}"
         IFS=',' read -r -a image_array <<< "$images"
         for image in "${image_array[@]}"; do
+          docker login -u "pengnanke123@aliyun.com" -p "037561@Pnk1065B" registry-1.docker.io
           docker pull "${image}" --platform "linux/amd64"
           docker save "${image}" -o "${image//\//_}-amd64.tar"
         done
